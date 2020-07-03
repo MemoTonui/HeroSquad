@@ -1,0 +1,34 @@
+{{#partial "title" }}
+ 
+  
+{{/partial}}
+
+<!--form.hbs.-->
+{{#partial "content"}}
+<div>
+ <h2>Create Your Own Hero squad</h2>
+  <p class="text-muted">Get as creative as you can.</p>
+  <hr>
+  </div>
+<form action='/Squad' method="POST">
+ <div class="form-group">
+   <label for="squadName">Squad Name:</label>
+   <input id="squadName" name="squadName" class="form-control" type="text">
+ </div>
+ <div class="form-group">
+   <label for="maxSize">Maximum Squad Members:</label>
+   <input id="maxSize" name="maxSize" class="form-control" type="number">
+ </div>
+ <div class="form-group">
+   <label for="description">What cause are you fighting for:</label>
+   <input id="description" name="description" class="form-control" type="text">
+ </div>
+
+ <button type="submit" class="btn btn-block">
+   CREATE
+ </button>
+</form>
+<!--form.hbs.-->
+{{/partial}}
+
+{{> layout.hbs}}

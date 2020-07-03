@@ -1,21 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Chathura&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Modak&display=swap');
 
 *{
     padding: 10px;
     margin: 10px;
+    font-family: 'Chathura', sans-serif;
+    font-size: 30px;
 }
 h1{
-    font-family: 'Modak', cursive;
+    font-family: 'Bungee Shade', cursive;
     letter-spacing:1em;
-    font-size: 50px;
-    
+    font-size: 55px;
+    color:rgb(82, 3, 82); 
+}
+h2{
+    font-family: 'Modak', cursive;
+    letter-spacing: 0.5em;
+    font-size: 30px; 
 }
 
-p{
-    font-family: 'Chathura', sans-serif;
-    font-size: 40px;
-}
 li{
     margin-right: 20px;
+}
+a{
+    color: white;
+    letter-spacing: 0.5em;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color:rgb(82, 3, 82) ;
+}
+
+.btn {
+    
+    background-color: rgb(148, 103, 148);
+}
+.btn-dark, .btn-dark:hover {
+    background-color:none;
+    margin-right: 150px;
+    font-size: 16px;
+}
+
+.content {
+    margin: 40px;
+    padding: 30px;
+    border-radius: 10px;
+    -webkit-box-shadow: 7px 5px 15px 0px rgba(50, 50, 50, 0.45);
+    -moz-box-shadow:    7px 5px 15px 0px rgba(50, 50, 50, 0.45);
+    box-shadow:         7px 5px 15px 0px rgba(50, 50, 50, 0.45);
 }

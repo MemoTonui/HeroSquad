@@ -31,6 +31,22 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }), new HandlebarsTemplateEngine());
 
+        //route to fill Squad form
+        get("/form",((request, response) -> {
+            Map<String, Object> model = new HashMap();
+            return new ModelAndView(model,"form.hbs");
+        }),new HandlebarsTemplateEngine());
+
+        //post form results
+        post("/Squad",((request, response) -> {
+            Map<String, Object> model = new HashMap();
+            model.put("squadName",request.session().attribute("squadName"));
+            model.put("maxSize",request.session().attribute("maxSize"));
+            model.put("description",request.session().attribute("description"));
+            return new ModelAndView(model,"success.hbs");
+        }),new HandlebarsTemplateEngine());
+
+
     }
 
 
