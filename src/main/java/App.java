@@ -1,3 +1,11 @@
+import model.Squad;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import static spark.Spark.*;
 
 public class App {
@@ -14,6 +22,15 @@ public class App {
 
         port(getHerokuAssignedPort());
         staticFileLocation("/public");
+
+        //home route
+        get("/",((request, response) -> {
+            Map<String, Object> model = new HashMap();
+            ArrayList<Squad> squads = Squad.getInstances();
+            model.put("squads", squads);
+            return new ModelAndView(model, "index.hbs");
+        }), new HandlebarsTemplateEngine());
+
     }
 
 

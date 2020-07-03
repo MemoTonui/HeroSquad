@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Chathura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
+*{
+    padding: 10px;
+    margin: 10px;
+}
+h1{
+    font-family: 'Modak', cursive;
+    letter-spacing:1em;
+    font-size: 50px;
+    
+}
+
+p{
+    font-family: 'Chathura', sans-serif;
+    font-size: 40px;
+}
+li{
+    margin-right: 20px;
+}
