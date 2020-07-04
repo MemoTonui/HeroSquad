@@ -1,3 +1,4 @@
+import model.Hero;
 import model.Squad;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -35,7 +36,7 @@ public class App {
             return new ModelAndView(model,"form.hbs");
         }),new HandlebarsTemplateEngine());
 
-        //post form results
+        //post Squad form results
         post("/Squad",((request, response) -> {
             Map<String, Object> model = new HashMap();
             String squadName = request.queryParams("squadName");
@@ -66,6 +67,22 @@ public class App {
             model.put("squad", squad); //add it to model for template to display
             return new ModelAndView(model, "Squad.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
+
+        //post Hero form responses
+        post("/Heroes",((request, response) -> {
+            Map<String, Object> model = new HashMap();
+            String heroName = request.queryParams("heroName");
+            request.session().attribute("heroName", heroName);
+            int age =Integer.parseInt(request.queryParams("age"));
+            request.session().attribute("age", age);
+            String superPower = request.queryParams("superPower");
+            request.session().attribute("superPower", superPower);
+            String weakness = request.queryParams("weakness");
+            request.session().attribute("weakness", weakness);
+            Hero hero = new Hero(heroName,age,superPower,weakness);
+            response.redirect("/Heroes");
+            return new ModelAndView(model,"success.hbs");
+        }),new HandlebarsTemplateEngine());
 
 
     }
