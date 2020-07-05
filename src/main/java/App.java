@@ -68,7 +68,22 @@ public class App {
             return new ModelAndView(model, "Squad.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
 
-        //post Hero form responses
+        //route to fill Squad form
+        get("/Heroform",((request, response) -> {
+            Map<String, Object> model = new HashMap();
+            return new ModelAndView(model,"Heroform.hbs");
+        }),new HandlebarsTemplateEngine());
+
+        //shows all heroes in template Heroes.hbs
+        get("/Heroes",((request, response) -> {
+            Map <String, Object> model = new HashMap<>();
+            ArrayList<Hero> heroes = Hero.getHeroes();
+            model.put("heroes", heroes);
+            return new ModelAndView(model, "Heroes.hbs");
+        }),new HandlebarsTemplateEngine());
+
+
+        //post ressults from heroes form
         post("/Heroes",((request, response) -> {
             Map<String, Object> model = new HashMap();
             String heroName = request.queryParams("heroName");
@@ -80,10 +95,46 @@ public class App {
             String weakness = request.queryParams("weakness");
             request.session().attribute("weakness", weakness);
             Hero hero = new Hero(heroName,age,superPower,weakness);
-            response.redirect("/Heroes");
             return new ModelAndView(model,"success.hbs");
         }),new HandlebarsTemplateEngine());
 
+
+        // route to handle a form for adding new heroes to squads specific squad using the squad id
+        get("squads/:id/heroes/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Squad squad = Squad.findById(Integer.parseInt(request.queryParams(":id")));
+            model.put("squad", squad);
+            return new ModelAndView(model,"Heroform.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //post new Hero form to a squad
+        post("/Heroes",((request, response) -> {
+            Map<String, Object> model = new HashMap();
+            Squad squad = Squad.findById(Integer.parseInt(request.queryParams("id")));
+            String heroName = request.queryParams("heroName");
+            request.session().attribute("heroName", heroName);
+            int age =Integer.parseInt(request.queryParams("age"));
+            request.session().attribute("age", age);
+            String superPower = request.queryParams("superPower");
+            request.session().attribute("superPower", superPower);
+            String weakness = request.queryParams("weakness");
+            request.session().attribute("weakness", weakness);
+            Hero hero = new Hero(heroName,age,superPower,weakness);
+
+            if (squad.getHeroes().size() >= squad.getMaxSize()) {
+                String fullSquad = "Squad is full";
+                model.put("fullSquad", fullSquad);
+            }
+            // add the hero
+            else{
+                squad.addHero(hero);
+            }
+
+            model.put("hero",hero);
+           // model.put("hero",squad);
+
+            return new ModelAndView(model,"success.hbs");
+        }),new HandlebarsTemplateEngine());
 
     }
 

@@ -6,6 +6,10 @@ plugins {
 group 'com.moringa'
 version '1.0-SNAPSHOT'
 
+application{
+    mainClassName = 'App'
+}
+
 repositories {
     mavenCentral()
 }

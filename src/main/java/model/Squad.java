@@ -7,6 +7,7 @@ public class Squad {
     private int maxSize;
     private String description;
     private static ArrayList<Squad> instances = new ArrayList<>();
+    private  ArrayList<Hero> heroes;
     private int id;
 
 
@@ -17,6 +18,7 @@ public class Squad {
         this.description = description;
         instances.add(this);
         this.id = instances.size();
+        heroes = new ArrayList<Hero>();
 
     }
 
@@ -30,6 +32,14 @@ public class Squad {
     public static Squad findById(int id){
         return instances.get(id-1);
     }
+
+    public ArrayList<Hero> getHeroes(){
+        return heroes;
+    }
+    public void addHero(Hero hero) {
+        heroes.add(hero);
+    }
+
 
     public String getSquadName() {
         return squadName;

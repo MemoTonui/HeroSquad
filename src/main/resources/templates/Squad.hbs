@@ -4,19 +4,49 @@
 {{/partial}}
 
 {{#partial "content"}}
+
+
+
+
    {{#if squads }}
-       {{#each squads }}
        
-   <div class="card  col-sm-3" style="max-width: 15rem;">
-  <div class="card-header">{{ squadName }}</div>
-  <div class="card-body">
-    <h5 class="card-title">We fight for {{ description }}</h5>
-    <p class="badge badge-info">Maximum Size is: {{ maxSize }}</p>
+       <div class="content">
+    <h3>Here are your heros!!</h3><hr>
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID </th>
+      <th scope="col"> Squad Name </th>
+      <th scope="col">Maximum Size</th>
+      <th scope="col"> Cause </th>
+      <th scope="col">Squad Heroes</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each squads }}
+    <tr>
+      <th scope="row"> {{id}} </th>
+      <td> {{squadName}} </td>
+      <td> {{maxSize}} </td>
+      <td> {{description}} </td>
+      <td>
+      {{#if heroes}}
+          {{each heroes }}
+      <td>{{heroName}}</td>
+      {{/if}}
+        <button class="btn btn-info" style="font-size:10px" ><a href="/Heroform">ADD HERO</a></button></td>
+    </tr>
+       {{/each }}
+  </tbody>
+</table>
+
+       </div>
   </div>
 </div>
 </div>
    
-{{/each }}
+
+
 {{else}}
 <div class="alert alert-warning">
     <p >No Squads Created :(.....Please make us some Heroes..</p>

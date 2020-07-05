@@ -54,4 +54,13 @@ public class SquadTest {
         assertEquals(2,Squad.findById(squad2.getId()).getId());
 
     }
+
+    @Test
+    public void addHero_addsHeroToList_true() {
+        Squad squad = new Squad("Linda",2,"Fight Crime");
+        Hero hero = new Hero("Smartness", 20, "intelligent", "Power failure");
+        squad.addHero(hero);
+        assertTrue(squad.getHeroes().contains(hero));
+    }
+
 }

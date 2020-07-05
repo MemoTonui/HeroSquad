@@ -1,4 +1,6 @@
-App.java
- App
 model/Squad.java
  model.Squad
+model/Hero.java
+ model.Hero
+App.java
+ App
