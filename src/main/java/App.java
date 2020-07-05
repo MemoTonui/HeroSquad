@@ -1,6 +1,7 @@
 import model.Hero;
 import model.Squad;
 import spark.ModelAndView;
+import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class App {
     public static void main(String[] args) {
 
         port(getHerokuAssignedPort());
-        staticFileLocation("/public");
+        Spark.staticFiles.location("/public");
+
 
         //home route
         get("/",((request, response) -> {
@@ -147,10 +149,10 @@ public class App {
 
         get("/Heroes/:id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfPostToDelete = Integer.parseInt(req.params(":id")); //pull id - must match route segment
-            Hero deleteHero = Hero.findById(idOfPostToDelete); //use it to find post
+            int idOfHeroToDelete = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            Hero deleteHero = Hero.findById(idOfHeroToDelete); //use it to find post
             deleteHero.deleteHero();
-            return new ModelAndView(model, "success.hbs");
+            return new ModelAndView(model, "delete.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
