@@ -6,6 +6,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.*;
@@ -55,7 +56,7 @@ public class App {
         //show all squads
         get("/Squad",((request, response) -> {
             Map <String, Object> model = new HashMap<>();
-            ArrayList<Squad> squads = Squad.getInstances();
+            List<Squad> squads = Squad.getInstances();
             model.put("squads", squads);
             return new ModelAndView(model, "Squad.hbs");
         }),new HandlebarsTemplateEngine());
@@ -64,7 +65,7 @@ public class App {
         //get individual posted squad
         get("/Squad/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int SquadIdToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            int SquadIdToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
             Squad squad = Squad.findById(SquadIdToFind); //use it to find post
             model.put("squads", squad); //add it to model for template to display
             return new ModelAndView(model, "squaddetails.hbs"); //individual post page.
@@ -81,7 +82,7 @@ public class App {
         //shows all heroes in template Heroes.hbs
         get("/Heroes",((request, response) -> {
             Map <String, Object> model = new HashMap<>();
-            ArrayList<Hero> heroes = Hero.getHeroes();
+            List<Hero> heroes = Hero.getHeroes();
             model.put("heroes", heroes);
             return new ModelAndView(model, "Heroes.hbs");
         }),new HandlebarsTemplateEngine());

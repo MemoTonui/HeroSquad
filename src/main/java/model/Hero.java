@@ -1,13 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Hero {
     private String heroName;
     private int age;
     private String superPower;
     private String weakness;
-    private static ArrayList<Hero> heroes= new ArrayList<>();
+    private static List<Hero> heroes= new ArrayList<>();
     private int id;
 
     public Hero(String heroName,int age,String superPower,String weakness) {
@@ -40,7 +41,7 @@ public class Hero {
         return weakness;
     }
 
-    public static ArrayList<Hero> getHeroes() {
+    public static List<Hero> getHeroes() {
         return heroes;
     }
 

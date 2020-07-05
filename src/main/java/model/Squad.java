@@ -1,13 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Squad {
     private  String squadName;
     private int maxSize;
     private String description;
-    private static ArrayList<Squad> instances = new ArrayList<>();
-    private  ArrayList<Hero> heroes;
+    private static List<Squad> instances = new ArrayList<>();
+    private  List<Hero> heroes;
     private int id;
     private int heroesSize;
 
@@ -24,7 +25,7 @@ public class Squad {
 
     }
 
-    public static ArrayList<Squad> getInstances() {
+    public static List<Squad> getInstances() {
         return instances;
     }
 
@@ -35,7 +36,7 @@ public class Squad {
         return instances.get(id-1);
     }
 
-    public ArrayList<Hero> getHeroes(){
+    public List<Hero> getHeroes(){
         return heroes;
     }
     public int getHeroesSize(){
