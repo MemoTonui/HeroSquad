@@ -11,7 +11,7 @@
    {{#if squads }}
        
        <div class="content">
-    <h3>Here are your heros!!</h3><hr>
+    <h3>Here are your Hero Squads!!</h3><hr>
     <table class="table table-striped table-dark">
   <thead>
     <tr>
@@ -30,11 +30,13 @@
       <td> {{maxSize}} </td>
       <td> {{description}} </td>
       <td>
+       
       {{#if heroes}}
-          {{each heroes }}
-      <td>{{heroName}}</td>
+          {{#each heroes }}
+       <li>{{heroName}}</li>
+      {{/each}}
       {{/if}}
-        <button class="btn btn-info" style="font-size:10px" ><a href="/Heroform">ADD HERO</a></button></td>
+     <button class="btn btn-info" style="font-size:10px" ><a href="/Heroform">ADD HERO</a></button></td>
     </tr>
        {{/each }}
   </tbody>

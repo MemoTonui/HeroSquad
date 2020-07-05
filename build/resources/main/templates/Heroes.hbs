@@ -4,18 +4,24 @@
 {{/partial}}
 
 {{#partial "content"}}
+<div class="row">
+
+
     {{#if heroes }}
         {{#each heroes }}
+        <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"> {{heroName}} </h5> <hr>
+    <h6 class="card-subtitle mb-2">Age : {{age}}</h6>
+    <p class="card-text"> Super Power: {{superPower}} </p>
+     <p class="card-text"> Weakness: {{weakness}} </p>
+      <p class="card-text"> Squad Name {{squadName}} </p>
 
-            <div class="card  col-sm-3" style="max-width: 15rem;">
-                <div class="card-header">{{ heroName }}</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{superPower }}</h5>
-                    <p class="badge badge-info">{{age}}</p>
-                </div>
-            </div>
-            </div>
-
+     <hr>
+    <a href="/Squad/{{id}}" style="color:cornflowerblue;" class="card-link"> View Squad </a>
+    <a href="#" style="color: red;" class="card-link">Delete</a>
+  </div>
+</div>
         {{/each }}
     {{else}}
         <div class="alert alert-info">
@@ -24,6 +30,7 @@
         </div>
 
     {{/if}}
+    </div>
 {{/partial}}
 
 {{> layout.hbs}}

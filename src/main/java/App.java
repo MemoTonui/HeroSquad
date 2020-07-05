@@ -64,7 +64,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int SquadIdToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
             Squad squad = Squad.findById(SquadIdToFind); //use it to find post
-            model.put("squad", squad); //add it to model for template to display
+            model.put("squads", squad); //add it to model for template to display
             return new ModelAndView(model, "Squad.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
 
@@ -73,6 +73,8 @@ public class App {
             Map<String, Object> model = new HashMap();
             return new ModelAndView(model,"Heroform.hbs");
         }),new HandlebarsTemplateEngine());
+
+
 
         //shows all heroes in template Heroes.hbs
         get("/Heroes",((request, response) -> {
@@ -98,17 +100,22 @@ public class App {
             return new ModelAndView(model,"success.hbs");
         }),new HandlebarsTemplateEngine());
 
-
-        // route to handle a form for adding new heroes to squads specific squad using the squad id
-        get("squads/:id/heroes/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            Squad squad = Squad.findById(Integer.parseInt(request.queryParams(":id")));
-            model.put("squad", squad);
-            return new ModelAndView(model,"Heroform.hbs");
+        //new Hero forms
+        get("/Heroform", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "Heroform.hbs");
         }, new HandlebarsTemplateEngine());
 
+        // route to handle a form for adding new heroes to squads specific squad using the squad id
+      /*  get("/Squad/:id/Heroes/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Squad squad = Squad.findById(Integer.parseInt(request.queryParams("id")));
+            model.put("squads", squad);
+            return new ModelAndView(model,"Heroform.hbs");
+        }, new HandlebarsTemplateEngine());
+*/
         //post new Hero form to a squad
-        post("/Heroes",((request, response) -> {
+        post("/Squad/:id",((request, response) -> {
             Map<String, Object> model = new HashMap();
             Squad squad = Squad.findById(Integer.parseInt(request.queryParams("id")));
             String heroName = request.queryParams("heroName");
@@ -130,9 +137,8 @@ public class App {
                 squad.addHero(hero);
             }
 
-            model.put("hero",hero);
+            model.put("squads",squad);
            // model.put("hero",squad);
-
             return new ModelAndView(model,"success.hbs");
         }),new HandlebarsTemplateEngine());
 

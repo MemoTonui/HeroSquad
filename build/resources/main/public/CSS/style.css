@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Modak&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Indie+Flower&family=Modak&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Indie+Flower&family=Modak&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 *{
     padding: 5px;
@@ -57,12 +58,5 @@ a:hover{
 }
 .card{
     float: left;
-    color: white;
-    background-color: rgba(0,0,0,0.65);
-    background-blend-mode: darken;
-    background-position: 60% 40%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height:300px;
-    position: relative;
+    font-family: 'Quicksand', sans-serif;
 }
