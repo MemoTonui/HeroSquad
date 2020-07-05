@@ -7,17 +7,19 @@
 
 
 <div class="container row">
-{{#if squads}}
-    
+    {{#if squads}}
+    {{#if heroes}}
+{{#each heroes}}
  <div class="card-body">
     <h5 class="card-title">Squad Name: {{squadName}} </h5> <hr>
     <p class="card-text">Our Cause:{{description}} </p>
      <p class="card-text"><span class="label label-primary"> Maximum Size : {{maxSize}}</span> </p>
       
       <hr>
-       <a href="/Squad" style="color:cornflowerblue;" class="card-link"> Squads </a>
-    <a href="#" style="color: red;" class="card-link">Delete</a>
+       <a href="/Squad" style="color:cornflowerblue;float:left;" class="card-link"> Squads </a>
+    <a href="#" style="color: red;margin-top:20px" class="card-link">Delete</a>
       </div>
+    {{/each}}
 {{else}}
 <div class="alert alert-danger">
     <p>
@@ -26,6 +28,7 @@
 
 </div>
 {{/if}}
+    {{/if}}
 </div>
 {{/partial }}
 

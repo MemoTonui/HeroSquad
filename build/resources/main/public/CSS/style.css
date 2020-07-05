@@ -8,9 +8,14 @@
 *{
     padding: 5px;
     margin: 5px;
-    font-family: 'Indie Flower', cursive;
-    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
     
+    
+}
+div{
+    background-color: white;
+    margin-top: 10px;
 }
 h1{
     font-family: 'Bungee Shade', cursive;
@@ -25,6 +30,9 @@ h2{
 .alert{
     font-family: 'Pacifico', cursive;
     font-size: 30px;
+}
+body{
+    background-color: rgb(24, 16, 43);
 }
 
 li{

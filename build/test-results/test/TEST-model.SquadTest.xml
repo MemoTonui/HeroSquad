@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="model.SquadTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-04T18:48:04" hostname="tonui-HP-ProBook-450-G5" time="0.005">
-  <properties/>
-  <testcase name="addHero_addsHeroToList_true" classname="model.SquadTest" time="0.005"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

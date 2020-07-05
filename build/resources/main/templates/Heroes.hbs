@@ -15,10 +15,10 @@
     <h6 class="card-subtitle mb-2">Age : {{age}}</h6>
     <p class="card-text"> Super Power: {{superPower}} </p>
      <p class="card-text"> Weakness: {{weakness}} </p>
+      {{#if squads}}
       <p class="card-text"> Squad Name {{squadName}} </p>
-
+{{/if}}
      <hr>
-    <a href="/Squad/{{id}}" style="color:cornflowerblue;" class="card-link"> View Squad </a>
     <a href="/Heroes/{{id}}/delete" style="color: red;" class="card-link">Delete</a>
   </div>
 </div>

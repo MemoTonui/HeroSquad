@@ -65,7 +65,7 @@ public class App {
         //get individual posted squad
         get("/Squad/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int SquadIdToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
+            int SquadIdToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
             Squad squad = Squad.findById(SquadIdToFind); //use it to find post
             model.put("squads", squad); //add it to model for template to display
             return new ModelAndView(model, "squaddetails.hbs"); //individual post page.
@@ -119,7 +119,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 */
         //post new Hero form to a squad
-        post("/Squad/:id/Heroes/new",((request, response) -> {
+        post("/Squad",((request, response) -> {
             Map<String, Object> model = new HashMap();
             Squad squad = Squad.findById(Integer.parseInt(request.queryParams(":id")));
             String heroName = request.queryParams("heroName");
@@ -132,19 +132,20 @@ public class App {
             request.session().attribute("weakness", weakness);
             Hero hero = new Hero(heroName,age,superPower,weakness);
 
-            if (squad.getHeroes().size() >= squad.getMaxSize()) {
+
+          /*  if (squad.getHeroes().size() >= squad.getMaxSize()) {
                 String fullSquad = "Squad is full";
                 model.put("fullSquad", fullSquad);
-            }
+            }*/
             // add the hero
-            else{
+           
                 squad.addHero(hero);
+                squad.getHeroesSize();
                 
-            }
 
             model.put("squads",squad);
            // model.put("hero",squad);
-            response.redirect("/Squad");
+
             return new ModelAndView(model,"success.hbs");
         }),new HandlebarsTemplateEngine());
 

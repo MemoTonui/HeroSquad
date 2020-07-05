@@ -14,7 +14,7 @@
       <th scope="col"> Squad Name </th>
       <th scope="col">Maximum Size</th>
       <th scope="col"> Cause </th>
-      <th scope="col">Squad Heroes</th>
+
     </tr>
   </thead>
   <tbody>
@@ -24,15 +24,14 @@
       <td> {{squadName}} </td>
       <td> {{maxSize}} </td>
       <td> {{description}} </td>
-        <td>{{heroesSize}} </td>
     <td> <button class="btn btn-info" style="font-size:10px" ><a href="Squad/{{id}}/Heroes/new">ADD HERO</a></button></td>
     </tr>
        {{/each }}
   </tbody>
 </table>
 
-       </div>
-  </div>
+<div>
+    <button class="btn btn-block btn-dark"><a href="/form">ADD A SQUAD</a></button>
 </div>
    
 
