@@ -145,6 +145,14 @@ public class App {
             return new ModelAndView(model,"success.hbs");
         }),new HandlebarsTemplateEngine());
 
+        get("/Heroes/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfPostToDelete = Integer.parseInt(req.params(":id")); //pull id - must match route segment
+            Hero deleteHero = Hero.findById(idOfPostToDelete); //use it to find post
+            deleteHero.deleteHero();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 
 

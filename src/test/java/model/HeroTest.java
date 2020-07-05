@@ -66,4 +66,13 @@ public class HeroTest {
         assertEquals(1,Hero.findById(hero.getId()).getId());
         assertEquals(2,Hero.findById(hero2.getId()).getId());
     }
+
+    @Test
+    public void deleteDeletesASpecificHero() throws Exception {
+        Hero hero = new Hero("Super Man",22,"Fly","Kryptonite");
+        Hero hero2 = new Hero("Spider Man", 35,"Spider Sense","Ethyl Chloride pesticide");
+        hero.deleteHero();
+        assertEquals(1, Hero.getHeroes().size()); //one is left
+        assertEquals(Hero.getHeroes().get(0).getId(), 2); //the one that was deleted has the id of 2. Why do we care?
+    }
 }

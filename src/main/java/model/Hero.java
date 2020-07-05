@@ -50,4 +50,8 @@ public class Hero {
     public static Hero findById(int id){
         return heroes.get(id-1);
     }
+
+    public void deleteHero() {
+        heroes.remove(id-1);
+    }
 }
