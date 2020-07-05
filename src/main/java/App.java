@@ -65,7 +65,7 @@ public class App {
             int SquadIdToFind = Integer.parseInt(req.params(":id")); //pull id - must match route segment
             Squad squad = Squad.findById(SquadIdToFind); //use it to find post
             model.put("squads", squad); //add it to model for template to display
-            return new ModelAndView(model, "Squad.hbs"); //individual post page.
+            return new ModelAndView(model, "squaddetails.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
 
         //route to fill Squad form
@@ -85,7 +85,7 @@ public class App {
         }),new HandlebarsTemplateEngine());
 
 
-        //post ressults from heroes form
+        //post ressults from heroes form to heroes page
         post("/Heroes",((request, response) -> {
             Map<String, Object> model = new HashMap();
             String heroName = request.queryParams("heroName");
@@ -101,10 +101,11 @@ public class App {
         }),new HandlebarsTemplateEngine());
 
         //new Hero forms
-        get("/Heroform", (req, res) -> {
+        get("Squad/:id/Heroes/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "Heroform.hbs");
         }, new HandlebarsTemplateEngine());
+
 
         // route to handle a form for adding new heroes to squads specific squad using the squad id
       /*  get("/Squad/:id/Heroes/new", (request, response) -> {
@@ -115,9 +116,9 @@ public class App {
         }, new HandlebarsTemplateEngine());
 */
         //post new Hero form to a squad
-        post("/Squad/:id",((request, response) -> {
+        post("/Squad/:id/Heroes/new",((request, response) -> {
             Map<String, Object> model = new HashMap();
-            Squad squad = Squad.findById(Integer.parseInt(request.queryParams("id")));
+            Squad squad = Squad.findById(Integer.parseInt(request.queryParams(":id")));
             String heroName = request.queryParams("heroName");
             request.session().attribute("heroName", heroName);
             int age =Integer.parseInt(request.queryParams("age"));
@@ -135,10 +136,12 @@ public class App {
             // add the hero
             else{
                 squad.addHero(hero);
+                
             }
 
             model.put("squads",squad);
            // model.put("hero",squad);
+            response.redirect("/Squad");
             return new ModelAndView(model,"success.hbs");
         }),new HandlebarsTemplateEngine());
 

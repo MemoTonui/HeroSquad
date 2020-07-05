@@ -1,6 +1,6 @@
-model/Squad.java
- model.Squad
 model/Hero.java
  model.Hero
+model/Squad.java
+ model.Squad
 App.java
  App

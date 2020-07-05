@@ -9,6 +9,7 @@ public class Squad {
     private static ArrayList<Squad> instances = new ArrayList<>();
     private  ArrayList<Hero> heroes;
     private int id;
+    private int heroesSize;
 
 
 
@@ -19,6 +20,7 @@ public class Squad {
         instances.add(this);
         this.id = instances.size();
         heroes = new ArrayList<Hero>();
+        heroesSize=0;
 
     }
 
@@ -36,8 +38,12 @@ public class Squad {
     public ArrayList<Hero> getHeroes(){
         return heroes;
     }
+    public int getHeroesSize(){
+        return heroesSize;
+    }
     public void addHero(Hero hero) {
         heroes.add(hero);
+        heroesSize++;
     }
 
 
