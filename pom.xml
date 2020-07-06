@@ -75,7 +75,7 @@
                     <!-- Change this to YOUR application name! -->
                     <appName>hero-squad-tonui</appName>
                     <processTypes>
-                    <web> web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.moringa.Hero-Squad</web>
+                        <web>java -jar target/my-app-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>
